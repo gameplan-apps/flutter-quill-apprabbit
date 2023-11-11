@@ -64,43 +64,34 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
           sectionDividerSpace: configurations.sectionDividerSpace,
           toolbarSize: configurations.toolbarSize,
           childrenBuilder: (context) {
-            final toolbarConfigurations =
-                context.requireQuillToolbarConfigurations;
+            final toolbarConfigurations = context.requireQuillToolbarConfigurations;
 
-            final globalIconSize =
-                toolbarConfigurations.buttonOptions.base.globalIconSize;
+            final globalIconSize = toolbarConfigurations.buttonOptions.base.globalIconSize;
 
             final axis = toolbarConfigurations.axis;
             final globalController = context.requireQuillController;
 
-            final spacerWidget =
-                configurations.spacerWidget ?? const SizedBox.shrink();
+            final spacerWidget = configurations.spacerWidget ?? const SizedBox.shrink();
 
             return [
               if (configurations.showUndo) ...[
                 QuillToolbarHistoryButton(
                   options: toolbarConfigurations.buttonOptions.undoHistory,
-                  controller: toolbarConfigurations
-                          .buttonOptions.undoHistory.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.undoHistory.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
               if (configurations.showRedo) ...[
                 QuillToolbarHistoryButton(
                   options: toolbarConfigurations.buttonOptions.redoHistory,
-                  controller: toolbarConfigurations
-                          .buttonOptions.redoHistory.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.redoHistory.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
               if (configurations.showFontFamily) ...[
                 QuillToolbarFontFamilyButton(
                   options: toolbarConfigurations.buttonOptions.fontFamily,
-                  controller: toolbarConfigurations
-                          .buttonOptions.fontFamily.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.fontFamily.controller ?? globalController,
                   defaultDispalyText: context.loc.font,
                 ),
                 spacerWidget,
@@ -108,9 +99,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
               if (configurations.showFontSize) ...[
                 QuillToolbarFontSizeButton(
                   options: toolbarConfigurations.buttonOptions.fontSize,
-                  controller: toolbarConfigurations
-                          .buttonOptions.fontFamily.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.fontFamily.controller ?? globalController,
                   defaultDisplayText: context.loc.fontSize,
                 ),
                 spacerWidget,
@@ -119,9 +108,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.bold,
                   options: toolbarConfigurations.buttonOptions.bold,
-                  controller:
-                      toolbarConfigurations.buttonOptions.bold.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.bold.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -129,9 +116,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.subscript,
                   options: toolbarConfigurations.buttonOptions.subscript,
-                  controller: toolbarConfigurations
-                          .buttonOptions.subscript.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.subscript.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -139,9 +124,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.superscript,
                   options: toolbarConfigurations.buttonOptions.superscript,
-                  controller: toolbarConfigurations
-                          .buttonOptions.superscript.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.superscript.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -149,9 +132,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.italic,
                   options: toolbarConfigurations.buttonOptions.italic,
-                  controller:
-                      toolbarConfigurations.buttonOptions.italic.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.italic.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -159,9 +140,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.small,
                   options: toolbarConfigurations.buttonOptions.small,
-                  controller:
-                      toolbarConfigurations.buttonOptions.small.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.small.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -169,9 +148,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.underline,
                   options: toolbarConfigurations.buttonOptions.underLine,
-                  controller: toolbarConfigurations
-                          .buttonOptions.underLine.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.underLine.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -179,9 +156,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.strikeThrough,
                   options: toolbarConfigurations.buttonOptions.strikeThrough,
-                  controller: toolbarConfigurations
-                          .buttonOptions.strikeThrough.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.strikeThrough.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -189,47 +164,38 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.inlineCode,
                   options: toolbarConfigurations.buttonOptions.inlineCode,
-                  controller: toolbarConfigurations
-                          .buttonOptions.inlineCode.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.inlineCode.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
               if (configurations.showColorButton) ...[
                 QuillToolbarColorButton(
-                  controller:
-                      toolbarConfigurations.buttonOptions.color.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.color.controller ?? globalController,
                   isBackground: false,
                   options: toolbarConfigurations.buttonOptions.color,
+                  colorPicker: configurations.colorPicker!,
                 ),
                 spacerWidget,
               ],
               if (configurations.showBackgroundColorButton) ...[
                 QuillToolbarColorButton(
                   options: toolbarConfigurations.buttonOptions.backgroundColor,
-                  controller:
-                      toolbarConfigurations.buttonOptions.color.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.color.controller ?? globalController,
                   isBackground: true,
+                  colorPicker: configurations.colorPicker!,
                 ),
                 spacerWidget,
               ],
               if (configurations.showClearFormat) ...[
                 QuillToolbarClearFormatButton(
-                  controller: toolbarConfigurations
-                          .buttonOptions.clearFormat.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.clearFormat.controller ?? globalController,
                   options: toolbarConfigurations.buttonOptions.clearFormat,
                 ),
                 spacerWidget,
               ],
               if (theEmbedButtons != null)
                 for (final builder in theEmbedButtons)
-                  builder(
-                      globalController,
-                      globalIconSize,
-                      context.requireQuillToolbarBaseButtonOptions.iconTheme,
+                  builder(globalController, globalIconSize, context.requireQuillToolbarBaseButtonOptions.iconTheme,
                       configurations.dialogTheme),
               if (configurations.showDividers &&
                   isButtonGroupShown[0] &&
@@ -245,11 +211,8 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               if (configurations.showAlignmentButtons) ...[
                 QuillToolbarSelectAlignmentButton(
-                  controller: toolbarConfigurations
-                          .buttonOptions.selectAlignmentButtons.controller ??
-                      globalController,
-                  options: toolbarConfigurations
-                      .buttonOptions.selectAlignmentButtons,
+                  controller: toolbarConfigurations.buttonOptions.selectAlignmentButtons.controller ?? globalController,
+                  options: toolbarConfigurations.buttonOptions.selectAlignmentButtons,
                   // tooltips: Map.of(buttonTooltips)
                   //   ..removeWhere((key, value) => ![
                   //         ToolbarButtons.leftAlignment,
@@ -268,18 +231,14 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.rtl,
                   options: toolbarConfigurations.buttonOptions.direction,
-                  controller: toolbarConfigurations
-                          .buttonOptions.direction.controller ??
-                      context.requireQuillController,
+                  controller:
+                      toolbarConfigurations.buttonOptions.direction.controller ?? context.requireQuillController,
                 ),
                 spacerWidget,
               ],
               if (configurations.showDividers &&
                   isButtonGroupShown[1] &&
-                  (isButtonGroupShown[2] ||
-                      isButtonGroupShown[3] ||
-                      isButtonGroupShown[4] ||
-                      isButtonGroupShown[5]))
+                  (isButtonGroupShown[2] || isButtonGroupShown[3] || isButtonGroupShown[4] || isButtonGroupShown[5]))
                 QuillToolbarDivider(
                   axis,
                   color: configurations.sectionDividerColor,
@@ -287,20 +246,16 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               if (configurations.showHeaderStyle) ...[
                 QuillToolbarSelectHeaderStyleButtons(
-                  controller: toolbarConfigurations
-                          .buttonOptions.selectHeaderStyleButtons.controller ??
-                      globalController,
-                  options: toolbarConfigurations
-                      .buttonOptions.selectHeaderStyleButtons,
+                  controller:
+                      toolbarConfigurations.buttonOptions.selectHeaderStyleButtons.controller ?? globalController,
+                  options: toolbarConfigurations.buttonOptions.selectHeaderStyleButtons,
                 ),
                 spacerWidget,
               ],
               if (configurations.showDividers &&
                   configurations.showHeaderStyle &&
                   isButtonGroupShown[2] &&
-                  (isButtonGroupShown[3] ||
-                      isButtonGroupShown[4] ||
-                      isButtonGroupShown[5]))
+                  (isButtonGroupShown[3] || isButtonGroupShown[4] || isButtonGroupShown[5]))
                 QuillToolbarDivider(
                   axis,
                   color: configurations.sectionDividerColor,
@@ -310,9 +265,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.ol,
                   options: toolbarConfigurations.buttonOptions.listNumbers,
-                  controller: toolbarConfigurations
-                          .buttonOptions.listNumbers.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.listNumbers.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -320,18 +273,14 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.ul,
                   options: toolbarConfigurations.buttonOptions.listBullets,
-                  controller: toolbarConfigurations
-                          .buttonOptions.listBullets.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.listBullets.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
               if (configurations.showListCheck) ...[
                 QuillToolbarToggleCheckListButton(
                   options: toolbarConfigurations.buttonOptions.toggleCheckList,
-                  controller: toolbarConfigurations
-                          .buttonOptions.toggleCheckList.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.toggleCheckList.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -339,9 +288,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 QuillToolbarToggleStyleButton(
                   attribute: Attribute.codeBlock,
                   options: toolbarConfigurations.buttonOptions.codeBlock,
-                  controller: toolbarConfigurations
-                          .buttonOptions.codeBlock.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.codeBlock.controller ?? globalController,
                 ),
                 spacerWidget,
               ],
@@ -357,18 +304,14 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
               if (configurations.showQuote) ...[
                 QuillToolbarToggleStyleButton(
                   options: toolbarConfigurations.buttonOptions.quote,
-                  controller:
-                      toolbarConfigurations.buttonOptions.quote.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.quote.controller ?? globalController,
                   attribute: Attribute.blockQuote,
                 ),
                 spacerWidget,
               ],
               if (configurations.showIndent) ...[
                 QuillToolbarIndentButton(
-                  controller: toolbarConfigurations
-                          .buttonOptions.indentIncrease.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.indentIncrease.controller ?? globalController,
                   isIncrease: true,
                   options: toolbarConfigurations.buttonOptions.indentIncrease,
                 ),
@@ -376,17 +319,13 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
               ],
               if (configurations.showIndent) ...[
                 QuillToolbarIndentButton(
-                  controller: toolbarConfigurations
-                          .buttonOptions.indentDecrease.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.indentDecrease.controller ?? globalController,
                   isIncrease: false,
                   options: toolbarConfigurations.buttonOptions.indentDecrease,
                 ),
                 spacerWidget,
               ],
-              if (configurations.showDividers &&
-                  isButtonGroupShown[4] &&
-                  isButtonGroupShown[5])
+              if (configurations.showDividers && isButtonGroupShown[4] && isButtonGroupShown[5])
                 QuillToolbarDivider(
                   axis,
                   color: configurations.sectionDividerColor,
@@ -394,18 +333,14 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               if (configurations.showLink) ...[
                 QuillToolbarLinkStyleButton(
-                  controller: toolbarConfigurations
-                          .buttonOptions.linkStyle.controller ??
-                      globalController,
+                  controller: toolbarConfigurations.buttonOptions.linkStyle.controller ?? globalController,
                   options: toolbarConfigurations.buttonOptions.linkStyle,
                 ),
                 spacerWidget,
               ],
               if (configurations.showSearchButton) ...[
                 QuillToolbarSearchButton(
-                  controller:
-                      toolbarConfigurations.buttonOptions.search.controller ??
-                          globalController,
+                  controller: toolbarConfigurations.buttonOptions.search.controller ?? globalController,
                   options: toolbarConfigurations.buttonOptions.search,
                 ),
                 spacerWidget,

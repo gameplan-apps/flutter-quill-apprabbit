@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:flutter/widgets.dart'
-    show Axis, Widget, WrapAlignment, WrapCrossAlignment;
+import 'package:flutter/material.dart';
 
 import '../../../widgets/embeds.dart';
 import '../../themes/quill_dialog_theme.dart';
@@ -57,7 +55,7 @@ class QuillToolbarConfigurations extends QuillSharedToolbarProperties {
     super.toolbarSectionSpacing = kToolbarSectionSpacing,
     super.toolbarIconAlignment = WrapAlignment.center,
     super.toolbarIconCrossAlignment = WrapCrossAlignment.center,
-    super.buttonOptions = const QuillToolbarButtonOptions(),
+    this.buttonOptions = const QuillToolbarButtonOptions(),
     super.multiRowsDisplay = true,
     this.fontSizesValues,
     this.showDividers = true,
@@ -115,6 +113,7 @@ class QuillToolbarConfigurations extends QuillSharedToolbarProperties {
     /// the [multiRowsDisplay] is false, if [multiRowsDisplay] then the value
     /// will be [kDefaultIconSize] * 2
     super.toolbarSize,
+    this.colorPicker,
   }) : _toolbarSize = toolbarSize;
 
   final double? _toolbarSize;
@@ -128,6 +127,12 @@ class QuillToolbarConfigurations extends QuillSharedToolbarProperties {
     }
     return buttonOptions.base.globalIconSize * 2;
   }
+
+  final Future<Color> Function(Color)? colorPicker;
+
+  /// If you want change spesefic buttons or all of them
+  /// then you came to the right place
+  final QuillToolbarButtonOptions buttonOptions;
 
   /// A widget that will placed between each button in the toolbar
   /// can be used as a spacer
@@ -233,11 +238,9 @@ class QuillToolbarButtonOptions extends Equatable {
     this.color = const QuillToolbarColorButtonOptions(),
     this.backgroundColor = const QuillToolbarColorButtonOptions(),
     this.clearFormat = const QuillToolbarClearFormatButtonOptions(),
-    this.selectAlignmentButtons =
-        const QuillToolbarSelectAlignmentButtonOptions(),
+    this.selectAlignmentButtons = const QuillToolbarSelectAlignmentButtonOptions(),
     this.search = const QuillToolbarSearchButtonOptions(),
-    this.selectHeaderStyleButtons =
-        const QuillToolbarSelectHeaderStyleButtonsOptions(),
+    this.selectHeaderStyleButtons = const QuillToolbarSelectHeaderStyleButtonsOptions(),
     this.linkStyle = const QuillToolbarLinkStyleButtonOptions(),
     this.customButtons = const QuillToolbarCustomButtonOptions(),
   });
